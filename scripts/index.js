@@ -8,14 +8,13 @@ function createCard(initialCard){
   card.querySelector('.card__image').setAttribute('src', initialCard.link);;
   card.querySelector('.card__title').textContent = initialCard.name;
   card.querySelector('.card__delete-button').addEventListener('click', removeCard);
-  
   return card
 }
 // @todo: Функция удаления карточки
 function removeCard(evt){
   const eventTarget = evt.target;
-  const cardItem = eventTarget.closest('card');
-  cardItem.remove();
+  const card = eventTarget.closest('.card');
+  card.remove();
 }
 // @todo: Вывести карточки на страницу
 initialCards.forEach(element => {
