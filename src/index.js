@@ -9,6 +9,7 @@ const cardsContainer = document.querySelector('.places__list');
 
 const popupAdd = document.querySelector('.popup_type_new-card');
 const popupEdit = document.querySelector('.popup_type_edit');
+const popupImage = document.querySelector(".popup_type_image");
 
 const buttonAdd = document.querySelector('.profile__add-button');
 const buttonEdit = document.querySelector('.profile__edit-button');
@@ -20,6 +21,13 @@ const urlInput = formNewPlace.querySelector(".popup__input_type_url");
 const formEditProfile = document.forms["edit-profile"] ;
 const nameInput = formEditProfile.querySelector(".popup__input_type_name");
 const jobInput = formEditProfile.querySelector(".popup__input_type_description");
+
+function showImage(cardData) {
+  popupImage.querySelector(".popup__caption").textContent = cardData.name;
+  popupImage.querySelector(".popup__image").src = cardData.link;
+  popupImage.querySelector(".popup__image").alt = cardData.name;
+  openModal(popupImage);
+}
 
 // открытие модального окна изменения профиля
 buttonEdit.addEventListener('click', function () {
@@ -60,7 +68,7 @@ function submitFormNewPlace(evt) {
     name: placeInput.value,
     link: urlInput.value,
   }
-  cardsContainer.prepend(createCard(card, onDelete, cardTemplate, like));
+  cardsContainer.prepend(createCard(card, onDelete, cardTemplate, like, showImage));
   
   formNewPlace.reset();
 
@@ -70,7 +78,7 @@ formNewPlace.addEventListener('submit', submitFormNewPlace);
 
 // @todo: Вывести карточки на страницу
 initialCards.forEach((element) => {
-  cardsContainer.append(createCard(element, onDelete, cardTemplate, like));
+  cardsContainer.append(createCard(element, onDelete, cardTemplate, like, showImage));
 });
 
 
