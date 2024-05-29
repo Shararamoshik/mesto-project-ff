@@ -27,4 +27,4 @@ function handleCloseEsc(evt) {
     closeModal(modal);
   }
 }
-export {openModal, closeModal, handleCloseClick, handleCloseEsc};
+export {openModal, closeModal, handleCloseClick};

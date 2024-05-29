@@ -1,7 +1,7 @@
 
 import './pages/index.css';
 import {initialCards} from './scripts/cards.js';
-import {onDelete,createCard, like} from './scripts/card.js';
+import {deleteCard,createCard, likeCard} from './scripts/card.js';
 import {openModal, closeModal} from './scripts/modal.js'; 
 
 const cardTemplate = document.querySelector('#card-template');
@@ -22,20 +22,23 @@ const formEditProfile = document.forms["edit-profile"] ;
 const nameInput = formEditProfile.querySelector(".popup__input_type_name");
 const jobInput = formEditProfile.querySelector(".popup__input_type_description");
 
+const popupCaption = popupImage.querySelector(".popup__caption");
+const popupShowImage = popupImage.querySelector(".popup__image");
+
+const profileTitle = document.querySelector(".profile__title");
+const profileDescription = document.querySelector(".profile__description");
+
 function showImage(cardData) {
-  popupImage.querySelector(".popup__caption").textContent = cardData.name;
-  popupImage.querySelector(".popup__image").src = cardData.link;
-  popupImage.querySelector(".popup__image").alt = cardData.name;
+  popupCaption.textContent = cardData.name;
+  popupShowImage.src = cardData.link;
+  popupShowImage.alt = cardData.name;
   openModal(popupImage);
 }
 
 // открытие модального окна изменения профиля
 buttonEdit.addEventListener('click', function () {
-  const nameInput = document.querySelector('.popup__input_type_name');
-  const jobInput = document.querySelector('.popup__input_type_description');
-
-  nameInput.value = document.querySelector(".profile__title").textContent;
-  jobInput.value = document.querySelector(".profile__description").textContent;
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileDescription.textContent;
 
   openModal(popupEdit);
 })
@@ -46,11 +49,8 @@ function submitFormEditProfile(evt) {
   const nameValue = nameInput.value;
   const jobValue = jobInput.value;
 
-  const profileTitle = document.querySelector(".profile__title");
-  const profileJob = document.querySelector(".profile__description");
-
   profileTitle.textContent = nameValue;
-  profileJob.textContent = jobValue;
+  profileDescription.textContent = jobValue;
 
   closeModal(popupEdit);
 }
@@ -68,7 +68,7 @@ function submitFormNewPlace(evt) {
     name: placeInput.value,
     link: urlInput.value,
   }
-  cardsContainer.prepend(createCard(card, onDelete, cardTemplate, like, showImage));
+  cardsContainer.prepend(createCard(card, deleteCard, cardTemplate, likeCard, showImage));
   
   formNewPlace.reset();
 
@@ -78,7 +78,7 @@ formNewPlace.addEventListener('submit', submitFormNewPlace);
 
 // @todo: Вывести карточки на страницу
 initialCards.forEach((element) => {
-  cardsContainer.append(createCard(element, onDelete, cardTemplate, like, showImage));
+  cardsContainer.append(createCard(element, deleteCard, cardTemplate, likeCard, showImage));
 });
 
 
