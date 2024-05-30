@@ -14,8 +14,8 @@ function closeModal(modal){
 
 // заkрытие по клику на крестик и оверлей
 function handleCloseClick(evt) {
-  const modal = document.querySelector(".popup_is-opened");
   if ( evt.currentTarget === evt.target || evt.target.classList.contains('popup__close') ) {
+    const modal = document.querySelector(".popup_is-opened"); 
     closeModal(modal);
   }
 }
@@ -27,4 +27,4 @@ function handleCloseEsc(evt) {
     closeModal(modal);
   }
 }
-export {openModal, closeModal, handleCloseClick};
+export {openModal, closeModal};
