@@ -127,7 +127,6 @@ function handleAvatarFormSubmit(evt) {
     return api.setAvatar(avatarInput.value)
       .then((result) => {
         profileImage.style.backgroundImage = 'url(' + result.avatar + ')';
-        clearValidation(formEditAvatar, validationConfig);
         closeModal(popupEditAvatar);
       });
   }
@@ -149,8 +148,6 @@ function handleCardFormSubmit(evt) {
         cardsContainer.prepend(
           createCard(card, likeCard, showImage, openDeleteConfirmationPopup, profileId)
         );
-        formNewCard.reset();
-        clearValidation(formNewCard, validationConfig);
         closeModal(popupAddCard);
       });
   }

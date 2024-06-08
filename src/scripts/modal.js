@@ -1,8 +1,11 @@
 // отрытия попапа
 function openModal(modal){
-  modal.classList.add('popup_is-opened');
-  modal.addEventListener('click', handleCloseClick);
-  document.addEventListener('keydown', handleCloseEsc);
+  popup.classList.add("popup_is-animated");
+  setTimeout(() => {
+    popup.classList.add("popup_is-opened");
+    modal.addEventListener('click', handleCloseClick);
+    document.addEventListener('keydown', handleCloseEsc);
+  }, 1); 
 }
 
 // закрытие попапа
@@ -15,8 +18,7 @@ function closeModal(modal){
 // заkрытие по клику на крестик и оверлей
 function handleCloseClick(evt) {
   if ( evt.currentTarget === evt.target || evt.target.classList.contains('popup__close') ) {
-    const modal = document.querySelector(".popup_is-opened"); 
-    closeModal(modal);
+    closeModal(evt.currentTarget);
   }
 }
 
