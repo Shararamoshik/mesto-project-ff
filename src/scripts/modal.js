@@ -1,11 +1,11 @@
 // отрытия попапа
 function openModal(modal){
-  popup.classList.add("popup_is-animated");
+  modal.classList.add("popup_is-animated");
   setTimeout(() => {
-    popup.classList.add("popup_is-opened");
-    modal.addEventListener('click', handleCloseClick);
-    document.addEventListener('keydown', handleCloseEsc);
-  }, 1); 
+    modal.classList.add("popup_is-opened");
+  }, 1);
+  modal.addEventListener('click', handleCloseClick);
+  document.addEventListener('keydown', handleCloseEsc); 
 }
 
 // закрытие попапа
