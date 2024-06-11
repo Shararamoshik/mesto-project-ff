@@ -135,7 +135,7 @@ function handleAvatarFormSubmit(evt) {
 
 // открытие попапа аватара
 buttonEditAvatar.addEventListener('click', function () {
-  clearValidation(popupEditAvatar)
+  clearValidation(formEditAvatar, validationConfig)
   openModal(popupEditAvatar);
 });
 
@@ -157,7 +157,7 @@ function handleCardFormSubmit(evt) {
 
 // открытия попапа формы карточки
 buttonAdd.addEventListener('click', function () {
-  clearValidation(popupAddCard)
+  clearValidation(formNewCard, validationConfig)
   openModal(popupAddCard);
 });
 

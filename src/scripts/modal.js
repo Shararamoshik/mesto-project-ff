@@ -3,9 +3,9 @@ function openModal(modal){
   modal.classList.add("popup_is-animated");
   setTimeout(() => {
     modal.classList.add("popup_is-opened");
-  }, 1);
+  }, 1); 
   modal.addEventListener('click', handleCloseClick);
-  document.addEventListener('keydown', handleCloseEsc); 
+  document.addEventListener('keydown', handleCloseEsc);
 }
 
 // закрытие попапа
